@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Login</title>
+    <style>
+      .error {
+        color: #000;
+      }
+
+      .input-container {
+        display: flex;
+        flex-direction: column;
+        /* margin: 1rem auto; */
+        
+      }
+      #form{
+          margin:auto;
+          padding: 160px;
+          background-color: yellow;
+      }
+      #username{
+          padding: 10px;
+      }
+      #password{
+        padding: 10px;
+      }
+      #submit_button{
+          padding: 7px;
+      }
+      #submit_button:hover{
+          background-color: cyan;
+      }
+      #form{
+        border:2px solid black;
+        margin:50px;
+        padding: 10px 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="form" method="POST">
+      <div class="input-container">
+        <h1>Login</h1>
+        <label style="padding: 10px;"><b>USERNAME</b></label>
+        <input type="text" id="username" name="username" placeholder="Enter Username Here" />
+        <div class="error" id="name_error"></div>
+      </div>
+
+      <div class="input-container">
+        <label style="padding: 10px;"><b>PASSWORD</b></label>
+        <input type="password" id="password" name="password" placeholder="Enter Password Here"/>
+        <div class="error" id="password_error"></div>
+      </div>
+      <button type="submit" style="margin: 10px;" id="submit_button" value="Submit request">
+        Login
+      </button>
+    </form>
+    <script>
+      // We access to the inputs by their id's
+      let fullname = document.getElementById("username");
+      let address = document.getElementById("password");
+
+      // Error messages
+      let errorElement = document.getElementById("name_error");
+      let errorElementAddress = document.getElementById("password_error");
+
+      // Form
+      let contactForm = document.getElementById("form");
+
+      // Event listener
+      contactForm.addEventListener("submit", function (e) {
+        let messageName = [];
+        let messageAddress = [];
+
+        if (fullname.value === "" || fullname.value === null) {
+          messageName.push("* This field is required");
+        }
+
+        if (address.value === "" || address.value === null) {
+          messageAddress.push("* This field is required");
+        }
+
+        // Statement to shows the errors
+        if (messageName.length || messageAddress.length > 0) {
+          e.preventDefault();
+          errorElement.innerText = messageName;
+          errorElementAddress.innerText = messageAddress;
+        }
+
+        // if the values length is filled and it's greater than 2 then redirect to this page
+        if ((fullname.value.length > 2, address.value.length > 2)) {
+          e.preventDefault();
+          window.location.assign("sample.html");
+        }
+      });
+    </script>
+  </body>
+</html>
