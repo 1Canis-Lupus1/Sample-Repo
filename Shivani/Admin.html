@@ -92,12 +92,18 @@
             let messageName = [];
             let messageAddress = [];
     
-            if (username.value === "" || username.value === null) {
+            if (username.value === "" || username.value === null || username.value!="Shivani") {
               messageName.push("* Invalid Admin Username");
+              setTimeout(function(){
+                 window.location.reload();
+               },2000)
             }
     
-            if (password.value === "" || password.value === null) {
+            if (password.value === "" || password.value === null || password.value!="abc12345") {
               messageAddress.push("* Invalid Password");
+              setTimeout(function(){
+                 window.location.reload();
+               },2000)
             }
     
             // Statement to shows the errors
@@ -107,19 +113,9 @@
               errorElementAddress.innerText = messageAddress;
             }
     
-            console.log(username.value,password.value)
-    
             if (username.value=="Shivani" && password.value =="abc12345") {
               e.preventDefault();
               window.location.assign("sample.html");
-            }
-            else{
-              // alert("Invalid Credentials")
-              errorElement.innerText = messageName;
-              errorElementAddress.innerText = messageAddress;
-              setTimeout(function(){
-                window.location.reload();
-              },2000)
             }
           });
         </script>
